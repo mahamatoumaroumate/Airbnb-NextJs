@@ -46,7 +46,7 @@ async function getData({
       },
     },
   })
-  revalidatePath('/')
+
   return data
 }
 
