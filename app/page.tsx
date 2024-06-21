@@ -7,7 +7,7 @@ import { Suspense } from 'react'
 import SkeletonCard from './components/SkeletonCard'
 import NoItems from './components/NoItems'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
-import { unstable_noStore as noStore } from 'next/cache'
+import { unstable_noStore as noStore, revalidatePath } from 'next/cache'
 async function getData({
   searchParams,
   userId,
@@ -46,6 +46,7 @@ async function getData({
       },
     },
   })
+  revalidatePath('/')
   return data
 }
 
