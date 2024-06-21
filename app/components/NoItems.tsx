@@ -1,4 +1,6 @@
+import { Button } from '@/components/ui/button'
 import { FileQuestion } from 'lucide-react'
+import Link from 'next/link'
 interface iAppProps {
   title: string
   description: string
@@ -13,6 +15,9 @@ const NoItems = ({ title, description }: iAppProps) => {
       <p className='mt-2 text-center text-sm leading-6 text-muted-foreground'>
         {description}
       </p>
+      <form>
+        <Button className='my-4'>Back Home</Button>
+      </form>
     </div>
   )
 }

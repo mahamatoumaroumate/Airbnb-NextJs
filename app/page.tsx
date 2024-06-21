@@ -7,6 +7,7 @@ import SkeletonCard from './components/SkeletonCard'
 import NoItems from './components/NoItems'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { unstable_noStore as noStore, revalidatePath } from 'next/cache'
+import { Button } from '@/components/ui/button'
 async function getData({
   searchParams,
   userId,
@@ -82,10 +83,12 @@ async function ShowItems({
   return (
     <>
       {data.length === 0 ? (
-        <NoItems
-          title='Sorry no listings found for this category...'
-          description='Please check a other category or create your own listing!'
-        />
+        <>
+          <NoItems
+            title='Sorry no listings found for this category...'
+            description='Please check a other category or create your own listing!'
+          />
+        </>
       ) : (
         <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 mt-10 '>
           {data.map((item) => (
