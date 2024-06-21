@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button'
 import Navbar from './components/Navbar'
 import MapFilterItems from './components/MapFilterItems'
 import prisma from '@/lib/db'
@@ -85,7 +84,7 @@ async function ShowItems({
       {data.length === 0 ? (
         <NoItems
           title='Sorry no listings found for this category...'
-          description=' Please check a other category or create your own listing!'
+          description='Please check a other category or create your own listing!'
         />
       ) : (
         <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 mt-10 '>

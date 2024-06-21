@@ -4,6 +4,7 @@ import desktopLogo from '../../public/airbnb-desktop.png'
 import mobileLogo from '../../public/airbnb-mobile.webp'
 import UserNav from './UserNav'
 import SearchModalComponent from './SearchModalComponent'
+import { Button } from '@/components/ui/button'
 const Navbar = () => {
   return (
     <nav className='w-full border-b'>
@@ -32,6 +33,7 @@ const Navbar = () => {
           />
           <h1 className='text-2xl text-primary font-semibold'>airbnb</h1>
         </Link>
+
         <div className='absolute right-2 top-2'>
           <UserNav />
         </div>
