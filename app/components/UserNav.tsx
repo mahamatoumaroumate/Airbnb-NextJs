@@ -24,7 +24,7 @@ const UserNav = async () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <div className='rounded-full border px-2 py-1 lg:px-4 lg:py-2 flex items-center gap-x-3'>
+        <div className='rounded-full border px-2 py-1 lg:px-4 lg:py-2 flex items-center gap-x-3 z-[30px]'>
           <MenuIcon className='w-6 h-6 lg:w-5 lg:h-5' />
           <img
             src={

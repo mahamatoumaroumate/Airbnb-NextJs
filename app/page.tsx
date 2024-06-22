@@ -6,8 +6,8 @@ import { Suspense } from 'react'
 import SkeletonCard from './components/SkeletonCard'
 import NoItems from './components/NoItems'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
-import { unstable_noStore as noStore, revalidatePath } from 'next/cache'
-import { Button } from '@/components/ui/button'
+import { unstable_noStore as noStore } from 'next/cache'
+
 async function getData({
   searchParams,
   userId,
@@ -56,13 +56,17 @@ const Home = async ({
   searchParams?: { filter?: string }
 }) => {
   return (
-    <div className='container mx-auto px-5 lg:px-10'>
-      <Navbar />
-      <MapFilterItems />
-      <Suspense key={searchParams?.filter} fallback={<SkeletonLoading />}>
-        <ShowItems searchParams={searchParams} />
-      </Suspense>
-    </div>
+    <>
+      <div className='w-full fixed z-[20] top-0 left-0 bg-white pb-2 shadow-md '>
+        <Navbar />
+        <MapFilterItems />
+      </div>
+      <div className='container mt-[15rem] sm:mt-[12rem] mx-auto px-5 lg:px-10'>
+        <Suspense key={searchParams?.filter} fallback={<SkeletonLoading />}>
+          <ShowItems searchParams={searchParams} />
+        </Suspense>
+      </div>
+    </>
   )
 }
 export default Home

@@ -152,3 +152,25 @@ export async function createReservation(formData: FormData) {
   })
   return redirect('/')
 }
+
+export async function deleteHome(formData: FormData) {
+  const homeId = formData.get('homeId') as string
+  const pathName = formData.get('pathName') as string
+  const userId = formData.get('userId') as string
+  const deleteFavorite = await prisma.favorite.deleteMany({
+    where: {
+      homeId,
+    },
+  })
+  const deleteReservation = await prisma.reservation.deleteMany({
+    where: {
+      homeId,
+    },
+  })
+  const data = await prisma.home.delete({
+    where: {
+      id: homeId,
+    },
+  })
+  revalidatePath(pathName)
+}

@@ -4,6 +4,8 @@ import { redirect } from 'next/navigation'
 import NoItems from '../components/NoItems'
 import ListingCard from '../components/ListingCard'
 import { unstable_noStore as noStore } from 'next/cache'
+import { Button } from '@/components/ui/button'
+import { deleteHome } from '../actions'
 async function getData(userId: string) {
   noStore()
   const data = await prisma.home.findMany({
@@ -47,18 +49,25 @@ const MyHomes = async () => {
       ) : (
         <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-8 mt-8'>
           {data.map((item) => (
-            <ListingCard
-              key={item.id}
-              imagePath={item.photo as string}
-              homeId={item.id}
-              price={item.price as number}
-              description={item.description as string}
-              location={item.country as string}
-              userId={user.id}
-              pathName='/my-homes'
-              favoriteId={item.Favorite[0]?.id}
-              isInFavoriteList={item.Favorite.length > 0 ? true : false}
-            />
+            <div key={item.id}>
+              <ListingCard
+                imagePath={item.photo as string}
+                homeId={item.id}
+                price={item.price as number}
+                description={item.description as string}
+                location={item.country as string}
+                userId={user?.id}
+                pathName='/my-homes'
+                favoriteId={item.Favorite[0]?.id}
+                isInFavoriteList={item.Favorite.length > 0 ? true : false}
+              />
+              <form action={deleteHome} className='mt-[-30px]'>
+                <input type='hidden' name='homeId' value={item.id} />
+                <input type='hidden' name='userId' value={user?.id} />
+                <input type='hidden' name='pathName' value='/my-homes' />
+                <Button type='submit'>Delete</Button>
+              </form>
+            </div>
           ))}
         </div>
       )}

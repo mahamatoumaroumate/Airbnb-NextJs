@@ -24,7 +24,7 @@ const Navbar = () => {
         <SearchModalComponent />
         <UserNav />
       </div>
-      <div className='relative block sm:hidden'>
+      <div className='relative px-6 block sm:hidden'>
         <Link href='/' className='flex items-center'>
           <Image
             src={mobileLogo}
