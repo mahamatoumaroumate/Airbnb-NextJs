@@ -26,5 +26,5 @@ export async function GET() {
       },
     })
   }
-  return NextResponse.redirect('https://airbnb-next-js-two.vercel.app')
+  return NextResponse.redirect('https://airbnb-next-js-three.vercel.app')
 }
